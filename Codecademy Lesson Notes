@@ -1,0 +1,111 @@
+# Taking a Vacation
+# 3/7 Hotel
+
+# Solution:
+# For stating the hotel cost, here is what I tried. I kept getting an error, and then tried removing the quotation marks from the resulting prices after the word return:
+
+def hotel_cost(nights):
+    return 140 * nights
+
+
+def plane_ride_cost(city):
+    if city == "Charlotte":
+        return 183
+    elif city == "Tampa":
+        return 220
+    elif city == "Pittsburgh":
+        return 222
+    elif city == "Los Angeles":
+        return 475
+
+
+# 4/7 Rental car
+# Solution:
+# For the rental car at $40/day with a $50 discount for 7+ days or $20 discount for 3+ days, here's how I did it:
+
+def rental_car_cost(days):
+    """
+    Instructions
+    Below your existing code, define a function called rental_car_cost with an argument called days.
+    Calculate the cost of renting the car:
+    Every day you rent the car costs $40.
+    if you rent the car for 7 or more days, you get $50 off your total.
+    Alternatively (elif), if you rent the car for 3 or more days, you get $20 off your total.
+    You cannot get both of the above discounts.
+    Return that cost.
+    Just like in the example above, this check becomes simpler if you make the 7-day check an if statement and the 3-day check an elif statement.
+    """
+    cost = 40 * days
+    if days >= 7:
+        cost = 40 * days - 50
+    elif days >= 3:
+        cost = 40 * days - 20
+    return cost
+
+
+# Pull it Together
+# Great! Now that you've got your 3 main costs figured out, let's put them together in order to find the total cost of your trip.
+
+# Their sample code:
+
+def double(n):
+    return 2 * n
+
+
+def triple(p):
+    return 3 * p
+
+
+def add(a, b):
+    return double(a) + triple(b)
+
+
+# We define two simple functions,double(n) and triple(p) that return 2 times or 3 times their input. Notice that they have n and p as their arguments.
+# We define a third function, add(a, b)that returns the sum of the previous two functions when called with a and b, respectively.
+# Instructions 5/7
+# Below your existing code, define a function called trip_cost that takes two arguments, city and days.
+# Like the example above, have your function return the sum of calling the rental_car_cost(days), hotel_cost(days), and plane_ride_cost(city) functions.
+# It is completely valid to call the hotel_cost(nights) function with the variable days. Just like the example above where we call double(n) with the variable a, we pass the value of days to the new function in the argument nights.
+
+# This is what I entered. The code that worked perfectly earlier in the lesson, suddenly generated error messages with regard to various hotel costs and the error messages gave contradictory explanations. Then the solution was finally posted on the Community Forum and I was able to get past exercise 5/7, finished 6/7 and 7/7. It was a nightmare and a lot of people kept getting the same errors with some of the solutions being past the scope of what the lesson covered up to that point.
+
+# Solution:
+
+# Answer to Taking a Vacation "Plan Your Trip!" - Exercises 5/7, 6/7 and 7/7.
+
+def hotel_cost(nights):
+    return 140 * nights
+
+
+def hotel_cost(days):
+    return 140 * days
+
+
+def plane_ride_cost(city):
+    if city == "Charlotte":
+        return 183
+    elif city == "Tampa":
+        return 220
+    elif city == "Pittsburgh":
+        return 222
+    elif city == "Los Angeles":
+        return 475
+
+
+def rental_car_cost(days):
+    if days >= 7:
+        return (days * 40) - 50
+    elif days >= 3 and days < 7:
+        return (days * 40) - 20
+    elif days < 3:
+        return days * 40
+
+
+def trip_cost(city, days, spending_money):
+    return rental_car_cost(days) + hotel_cost(days) + plane_ride_cost(city) + spending_money
+
+
+print(trip_cost("Los Angeles", 5, 600))
+
+
+# Finally got a badge on 2015-05-10!
